@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>JS Bacics 1</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>JS Basics 2</h1>
+    </div>
+
+    <script>
+        const magic_multiply = (x, y) => {
+            switch (true) {
+                case (x == 5 && y == 2 || x == 2 && y == 5):
+                    return x * y;
+
+                case (x === 0 && y === 0):
+                    return 'All inputs 0';
+
+                case (x.constructor == Array):
+                    for (let i = 0; i < x.length; i++) {
+                        x[i] *= y;
+                    }
+                    return x;
+
+                case (y.constructor == String):
+                    return 'Error: Can not multiply by string';
+
+                case (x.constructor == String):
+                    let newStr = '';
+                    for (let i = 0; i < y; i++) {
+                        newStr += x;
+                    }
+                    return newStr;
+            }
+        };
+        let test1 = magic_multiply(2, 5);
+        console.log(test1);
+
+        let test2 = magic_multiply(0, 0);
+        console.log(test2);
+
+        let test3 = magic_multiply([1, 2, 3], 2);
+        console.log(test3);
+
+        let test4 = magic_multiply(7, "three");
+        console.log(test4);
+
+        let test5 = magic_multiply("Brendo", 4);
+        console.log(test5);
+    </script>
+</body>
+
+</html>
