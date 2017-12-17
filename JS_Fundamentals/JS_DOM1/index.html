@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>JS Bacics 1</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>JS Intermediate</h1>
+        <ul id="main">
+            <!-- this is empty-->
+        </ul>
+    </div>
+
+    <script>
+        //Complete the appendList function. appendList should take an array of
+        //strings and the id of a <ul> element, and append all elements of the
+        //array as <li> tags.
+        const appendList = (arr, element, id) => {
+            for (let i = 0; i < arr.length; i++) {
+                let newLi = document.createElement(element); //document.createElement() Creates an Element node
+                newLi.innerHTML = arr[i]; //modify its innerHTML content with the arr[i] value
+                document.getElementById("main").appendChild(newLi); //Returns the element that has the ID
+            } //attribute with the specified value
+        }; //appendChild() Adds a new child node, to an element, as the last child node
+        appendList(["Jeff", "Jenny", "Javier", "Joslyn", "Joe", "Jane", "Django"], 'li', 'main');
+    </script>
+</body>
+
+</html>
+
+</html>
