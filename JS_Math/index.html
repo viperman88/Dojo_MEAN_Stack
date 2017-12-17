@@ -54,6 +54,24 @@
         //console.log(how_many_even([1, 2, 3, 4, 5, 6, 7, 8, 9]));
 
         //4
+        const create_dummy_array = num => {
+            let randArr = [];
+            for (let i = 0; i < num; i++) {
+                let randNum = Math.floor(Math.random() * 10);
+                randArr.push(randNum);
+            }
+            return randArr;
+        }
+        //console.log(create_dummy_array(10));
+
+        //5
+        const random_choice = arr => {
+            let randNum = Math.floor(Math.random() * arr.length);
+            console.log(randNum);
+            let choice = arr[randNum];
+            return choice;
+        }
+        console.log(random_choice([1, 2, 3, 4, 5, 6, 7, 8, 9]));
     </script>
 </body>
 
