@@ -81,17 +81,18 @@
             ]
         };
         for (let user in users) {
-            let newH3 = document.createElement('H3');
+            //console.log(user.toUpperCase());
+            let newH3 = document.createElement('h3');
             newH3.innerHTML = `${user.toUpperCase()}:`;
             document.getElementById('main').appendChild(newH3);
-            //console.log(user.toUpperCase());
+
             for (let i = 0; i < users[user].length; i++) {
                 let num = i + 1;
                 let fullName = (`${users[user][i].last_name},${users[user][i].first_name}`);
+                //console.log(`${num}-${fullName.toUpperCase()}-${fullName.length}`);
                 let newP = document.createElement('p');
                 newP.innerHTML = `${num}-${fullName.toUpperCase()}-${fullName.length}`;
                 document.getElementById('main').appendChild(newP);
-                //console.log(`${num}-${fullName.toUpperCase()}-${fullName.length}`);
             }
         }
     </script>
