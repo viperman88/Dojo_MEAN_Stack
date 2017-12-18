@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>JS Bacics 1</title>
+    <style type="text/css">
+        /* border and styling for table data */
+
+        td {
+            border: 1px solid black;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        /* background and bolding for the first element of our rows and data */
+
+        td:first-child,
+        tr:first-child {
+            background-color: silver;
+            font-weight: bold;
+        }
+    </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>JS DOM 2</h1>
+        <ul id="target">
+            <!-- this is empty-->
+        </ul>
+    </div>
+
+    <script>
+        // define draw table
+        const draw_table = () => {
+            // create our html string, open up the table tag
+            let html_string = `<table>`;
+            // outer loop
+            for (let x = 0; x < 13; x++) {
+                // create a row for each iteration of the outer loop
+                html_string += `<tr>`;
+                // inner loop
+                for (let y = 0; y < 13; y++) {
+                    // calculate our number
+                    let nums = x * y;
+                    // attach our table data tags around the number
+                    let data = `<td> ${nums} </td>`;
+                    if (x === 0) {
+                        nums = y;
+                    }
+                    if (y === 0) {
+                        nums = x;
+                    }
+                    if (nums === 0) {
+                        data = `<td> X </td>`;
+                    } else {
+                        data = `<td> ${nums} </td>`;
+                    }
+                    // add it to the html
+                    html_string += data;
+                }
+                // after the inner loop, we cap our table rows
+                html_string += `</tr>`;
+            }
+            // after the outer loop, we cap our entire table
+            html_string += `</table>`;
+            document.getElementById("target").innerHTML = html_string;
+        }
+        draw_table();
+    </script>
+</body>
+
+</html>
