@@ -29,11 +29,11 @@
             constructor(name) { //using constructor method that runs with new instanceof class
                 this.name = name;
                 this.health = 100;
-                const speed = 3;
-                const strength = 3;
+                this.speed = 3;
+                this.strength = 3;
             }
             static showStats() { // static method == method belonging to the class
-                comment = `${name}'s health is: ${this.health}, speed is: ${speed}, strength is: ${strength}`;
+                comment = `${name}'s health is: ${this.health}, speed is: ${this.speed}, strength is: ${this.strength}`;
                 message();
                 return this;
             }
@@ -72,30 +72,58 @@
             }
         };
 
-        class Instructor extends Ninja { //creating a class with class keyword
-            contructor(name) { //using constructor method that runs with new instanceof class
+        class Sensei extends Ninja { //creating a class with class keyword
+            constructor(name) { //using constructor method that runs with new instanceof class
                 super(name);
                 this.health = 200;
-                const speed = 10;
-                const strength = 10;
+                this.speed = 10;
+                this.strength = 10;
+                this.wisdom = 10;
             }
-            instructorName() { // prototype method == method belonging to the instance of the class
-                comment = `My name is Instructor ${this.name}!`;
+            showStats() { // prototype method == method belonging to the class Ninja
+                comment = `${this.name}'s health is: ${this.health}, speed is: ${this.speed}, strength is: ${this.strength}, wisdom is ${this.wisdom}.`;
+                message();
+                return this;
+            }
+            senseiName() { // prototype method == method belonging to the instance of the class
+                comment = `My name is Sensei ${this.name}!`;
+                message();
+                return this;
+            }
+            speakWisdom() { // prototype method == method belonging to the instance of the class
+                super.drinkSake(); // calling drinkSake method inherited from parent class
+                comment = `Sake gives me wisdom! I see far over many moon! Climb tall mountain!`;
+                message();
+                return this;
+            }
+
+        };
+
+        class Observer {
+            constructor(name) {
+                this.name = name;
+            }
+            sayName() { // prototype method == method belonging to the class Ninja
+                comment = `My name is ${this.name}, I am just an observer!`;
                 message();
                 return this;
             }
         };
 
-        const maggie = new Instructor('Maggie');
+        const maggie = new Sensei('Maggie');
+        maggie.senseiName().showStats().speakWisdom();
+
+        const ashley = new Observer('Ashley');
+        ashley.sayName();
 
         const robert = new Ninja('Robert');
         robert.sayName();
 
         const john = new Ninja('John');
-        john.sayName().kick(maggie); //maggie is not an instanceof Ninja and should comment as so
+        john.sayName().kick(maggie);
 
         const mike = new Ninja('Mike');
-        mike.sayName().punch(john).kick(robert);
+        mike.sayName().punch(john).kick(ashley); // ashley is not an instanceof Ninja and should comment as so
     </script>
 </body>
 
