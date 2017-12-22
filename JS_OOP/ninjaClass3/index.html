@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>JS Ninja Class 3</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>JS Ninja Class 3 ES6 Format</h1>
+        <ul id="target">
+            <!-- this is empty-->
+        </ul>
+    </div>
+
+    <script>
+        let comment;
+        const message = () => {
+            let newEl = document.createElement('h5');
+            newEl.innerHTML = comment;
+            document.getElementById('target').appendChild(newEl);
+        };
+
+        class Ninja { //creating a class with class keyword
+            constructor(name) { //using constructor method that runs with new instanceof class
+                this.name = name;
+                this.health = 100;
+                const speed = 3;
+                const strength = 3;
+            }
+            static showStats() { // static method == method belonging to the class
+                comment = `${name}'s health is: ${this.health}, speed is: ${speed}, strength is: ${strength}`;
+                message();
+                return this;
+            }
+            sayName() { // prototype method == method belonging to the instance of the class
+                comment = `My name is Ninja ${this.name}!`;
+                message();
+                return this;
+            }
+            drinkSake() { // prototype method == method belonging to the instance of the class
+                this.health += 10;
+                comment = `${this.name} just drank sake. Health is now ${this.health}!`;
+                message();
+                return this;
+            }
+            kick(ninja) { // prototype method == method belonging to the instance of the class
+                if (ninja instanceof Ninja) { //should run this IF instanceof Ninja object
+                    ninja.health -= 15;
+                    comment = `${ninja.name} was kicked by ${this.name} and lost 15 health. Health is now ${ninja.health}.`;
+                    message();
+                    return this;
+                } else { //should run this if NOT instanceof Ninja object
+                    comment = `You tried to kick ${ninja.name} who is not a Ninja!`
+                    message();
+                }
+            }
+            punch(ninja) { // prototype method == method belonging to the instance of the class
+                if (ninja instanceof Ninja) { //should run this IF instanceof Ninja object
+                    ninja.health -= 5;
+                    comment = `${ninja.name} was punched by ${this.name} and lost 5 health. Health is now ${ninja.health}.`;
+                    message();
+                    return this;
+                } else { //should run this if NOT instanceof Ninja object
+                    comment = `You tried to punch ${ninja.name} who is not a Ninja!`
+                    message();
+                }
+            }
+        };
+
+        class Instructor extends Ninja { //creating a class with class keyword
+            contructor(name) { //using constructor method that runs with new instanceof class
+                super(name);
+                this.health = 200;
+                const speed = 10;
+                const strength = 10;
+            }
+            instructorName() { // prototype method == method belonging to the instance of the class
+                comment = `My name is Instructor ${this.name}!`;
+                message();
+                return this;
+            }
+        };
+
+        const maggie = new Instructor('Maggie');
+
+        const robert = new Ninja('Robert');
+        robert.sayName();
+
+        const john = new Ninja('John');
+        john.sayName().kick(maggie); //maggie is not an instanceof Ninja and should comment as so
+
+        const mike = new Ninja('Mike');
+        mike.sayName().punch(john).kick(robert);
+    </script>
+</body>
+
+</html>
