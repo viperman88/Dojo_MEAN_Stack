@@ -18,12 +18,37 @@
     </div>
 
     <script>
+        let comment;
+        const message = function(id) {
+            let newEl = document.createElement('h4');
+            newEl.innerHTML = comment;
+            document.getElementById('target').appendChild(newEl);
+        };
         const Ninja = function(name) {
             this.name = name;
             this.health = 100;
             const speed = 3;
             const strength = 3;
+
+            this.showStats = function() {
+                comment = `My health is: ${this.health}, speed is: ${speed}, strength is: ${strength}`;
+                message();
+                return this;
+            };
         };
+        Ninja.prototype.sayName = function() {
+            comment = `My name is Ninja ${this.name}!`;
+            message();
+            return this;
+        };
+        Ninja.prototype.drinkSake = function() {
+            this.health += 10;
+            comment = `I just drank sake, my heath is now ${this.health}!`;
+            message();
+            return this;
+        };
+        const robert = new Ninja('Robert');
+        robert.sayName().showStats().drinkSake();
     </script>
 </body>
 
