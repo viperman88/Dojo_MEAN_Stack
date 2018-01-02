@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>JS Deck O Cards</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>JS Deck O Cards</h1>
+        <ul id="target">
+            <!-- this is empty-->
+        </ul>
+    </div>
+
+    <script>
+        class Deck {
+            constructor() {
+                this.cardDeck = [];
+            }
+            reset() {
+                this.cardDeck = [];
+                const suits = ['Spades', 'Clubs', 'Diamonds', 'Hearts'];
+                const values = ['Ace', 'King', 'Queen', 'Jack', 9, 8, 7, 6, 5, 4, 3, 2];
+                for (let suit of suits) {
+                    for (let value of values) {
+                        this.cardDeck.push(`${value} of ${suit}`);
+                    }
+                }
+                console.log(this.cardDeck);
+                return this;
+            }
+        }
+        const deck1 = new Deck();
+        deck1.reset();
+    </script>
+</body>
+
+</html>
