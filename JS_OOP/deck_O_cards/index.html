@@ -18,6 +18,13 @@
     </div>
 
     <script>
+        let comment;
+        const message = (el) => {
+            let newEl = document.createElement(el);
+            newEl.innerHTML = comment;
+            document.getElementById('target').appendChild(newEl);
+        };
+
         class Deck {
             constructor() {
                 this.cardDeck = [];
@@ -34,6 +41,25 @@
                 console.log(this.cardDeck);
                 return this;
             }
+            shuffle() {
+                var m = this.cardDeck.length,
+                    t, i;
+
+                // While there remain elements to shuffle…
+                while (m) {
+
+                    // Pick a remaining element…
+                    i = Math.floor(Math.random() * m--);
+
+                    // And swap it with the current element.
+                    t = this.cardDeck[m];
+                    this.cardDeck[m] = this.cardDeck[i];
+                    this.cardDeck[i] = t;
+                }
+
+                return this;
+            }
+
         }
         const deck1 = new Deck();
         deck1.reset();
