@@ -25,6 +25,7 @@
             document.getElementById('target').appendChild(newEl);
         };
 
+
         class Deck {
             constructor() {
                 this.cardDeck = [];
@@ -32,17 +33,17 @@
             reset() {
                 this.cardDeck = [];
                 const suits = ['Spades', 'Clubs', 'Diamonds', 'Hearts'];
-                const values = ['Ace', 'King', 'Queen', 'Jack', 9, 8, 7, 6, 5, 4, 3, 2];
+                const values = ['Ace', 'King', 'Queen', 'Jack', 10, 9, 8, 7, 6, 5, 4, 3, 2];
                 for (let suit of suits) {
                     for (let value of values) {
                         this.cardDeck.push(`${value} of ${suit}`);
                     }
                 }
-                console.log(this.cardDeck);
+                //console.log(this.cardDeck);
                 return this;
             }
             shuffle() {
-                var m = this.cardDeck.length,
+                let m = this.cardDeck.length,
                     t, i;
 
                 // While there remain elements to shuffle…
@@ -56,13 +57,59 @@
                     this.cardDeck[m] = this.cardDeck[i];
                     this.cardDeck[i] = t;
                 }
-
+                //console.log(this.cardDeck);
                 return this;
             }
+            deal() {
+                return this.cardDeck.pop();
+            }
 
-        }
+        };
+
+        class Player {
+            constructor(name) {
+                this.name = name;
+                this.hand = [];
+            }
+            firstDeal(cardDeck) {
+                for (let i = 1; i < 3; i++) {
+                    this.hand.push(cardDeck.deal())
+                }
+                comment = `Welcome to the game ${this.name}. Your hand is ${this.hand}`;
+                message('h3');
+                return this;
+            }
+            hitMe(cardDeck) {
+                for (let i = 1; i < 2; i++) {
+                    this.hand.push(cardDeck.deal())
+                }
+                comment = `${this.name} asked dealer to Hit Me!! Your new hand is ${this.hand}`;
+                message('h3');
+                return this;
+            }
+            discard() {
+                comment = `${this.name} is folding, or laying for the win!`;
+                message('h3');
+                for (let i = 0; i < this.hand.length; i++) {
+                    this.hand.pop();
+                }
+                return this;
+            }
+        };
+
         const deck1 = new Deck();
-        deck1.reset();
+        deck1.reset().shuffle();
+        console.log(deck1);
+
+        const player1 = new Player('Robert');
+        player1.firstDeal(deck1);
+        player1.hitMe(deck1);
+        player1.discard();
+
+        const player2 = new Player('Maggie');
+        player2.firstDeal(deck1);
+        player2.hitMe(deck1).hitMe(deck1);
+        player2.discard();
     </script>
 </body>
 
