@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>JS Deck O Cards</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Deck O Cards</h1>
+
+        <div id="top" class="container">
+            <div id="first">
+                <nav class="navbar navbar-dark bg-dark">
+                    <div id="btn" class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" id="pOne" class="btn btn-primary">Start Player</button>
+                        <button type="button" id="hOne" class="btn btn-danger">Hit Me</button>
+                        <button type="button" id="dOne" class="btn btn-warning">Discard</button>
+                    </div>
+                </nav>
+            </div>
+
+            <div id="second">
+                <nav class="navbar navbar-dark bg-dark">
+                    <div id="btn" class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" id="pTwo" class="btn btn-primary">Start Player</button>
+                        <button type="button" id="hTwo" class="btn btn-danger">Hit Me</button>
+                        <button type="button" id="dTwo" class="btn btn-warning">Discard</button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div id="bottom" class="container">
+            <div id="third">
+                <nav class="navbar navbar-dark bg-dark">
+                    <div id="btn" class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" id="pThree" class="btn btn-primary">Start Player</button>
+                        <button type="button" id="hThree" class="btn btn-danger">Hit Me</button>
+                        <button type="button" id="dThree" class="btn btn-warning">Discard</button>
+                    </div>
+                </nav>
+            </div>
+
+            <div id="fourth">
+                <nav class="navbar navbar-dark bg-dark">
+                    <div id="btn" class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" id="pFour" class="btn btn-primary">Start Player</button>
+                        <button type="button" id="hFour" class="btn btn-danger">Hit Me</button>
+                        <button type="button" id="dFour" class="btn btn-warning">Discard</button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div id="btn1" class="btn-group" role="group" aria-label="Basic example">
+            <button id="reset" class="btn btn-danger my-2 my-sm-0" type="button">New Game</button>
+            <button id="shuffle" class="btn btn-success my-2 my-sm-0" type="button">Shuffle</button>
+        </div>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <script>
+        let comment;
+        const message = (el, id) => {
+            let newEl = document.createElement(el);
+            newEl.innerHTML = comment;
+            document.getElementById(id).appendChild(newEl);
+        };
+
+
+        class Deck {
+            constructor() {
+                this.cardDeck = [];
+            }
+            reset() {
+                this.cardDeck = [];
+                const suits = ['Spades', 'Clubs', 'Diamonds', 'Hearts'];
+                const values = ['Ace', 'King', 'Queen', 'Jack', 10, 9, 8, 7, 6, 5, 4, 3, 2];
+                for (let suit of suits) {
+                    for (let value of values) {
+                        this.cardDeck.push(`${value} of ${suit}`);
+                    }
+                }
+                //console.log(this.cardDeck);
+                return this;
+            }
+            shuffle() {
+                let m = this.cardDeck.length,
+                    t, i;
+
+                // While there remain elements to shuffle…
+                while (m) {
+
+                    // Pick a remaining element…
+                    i = Math.floor(Math.random() * m--);
+
+                    // And swap it with the current element.
+                    t = this.cardDeck[m];
+                    this.cardDeck[m] = this.cardDeck[i];
+                    this.cardDeck[i] = t;
+                }
+                //console.log(this.cardDeck);
+                return this;
+            }
+            deal() {
+                return this.cardDeck.pop();
+            }
+
+        };
+
+        class Player {
+            constructor(name) {
+                this.name = name;
+                this.hand = [];
+            }
+            firstDeal(cardDeck) {
+                for (let i = 1; i < 3; i++) {
+                    this.hand.push(cardDeck.deal())
+                }
+                comment = `Welcome to the game player ${this.name}. Your hand is ${this.hand}`;
+                return this;
+            }
+            hitMe(cardDeck) {
+                for (let i = 1; i < 2; i++) {
+                    this.hand.push(cardDeck.deal())
+                }
+                comment = `Player ${this.name} asked for a Hit! New hand is ${this.hand}`;
+                return this;
+            }
+            discard() {
+                comment = `Player ${this.name} is folding, or laying for the win!`;
+                for (let i = 0; i < this.hand.length; i++) {
+                    this.hand.pop();
+                }
+                return this;
+            }
+        };
+
+        $('#pOne').click(function() {
+            const player1 = new Player(1);
+            player1.firstDeal(deck1);
+            message('p', 'first');
+
+            $('#hOne').click(function() {
+                player1.hitMe(deck1);
+                message('p', 'first');
+            });
+
+            $('#dOne').click(function() {
+                player1.discard();
+                message('p', 'first');
+            });
+        });
+
+        $('#pTwo').click(function() {
+            const player2 = new Player(2);
+            player2.firstDeal(deck1);
+            message('p', 'second');
+
+            $('#hTwo').click(function() {
+                player2.hitMe(deck1);
+                message('p', 'second');
+            });
+
+            $('#dTwo').click(function() {
+                player2.discard();
+                message('p', 'second');
+            });
+        });
+
+        $('#pThree').click(function() {
+            const player3 = new Player(3);
+            player3.firstDeal(deck1);
+            message('p', 'third');
+
+            $('#hThree').click(function() {
+                player3.hitMe(deck1);
+                message('p', 'third');
+            });
+
+            $('#dThree').click(function() {
+                player3.discard();
+                message('p', 'third');
+            });
+        });
+
+        $('#pFour').click(function() {
+            const player4 = new Player(4);
+            player4.firstDeal(deck1);
+            message('p', 'fourth');
+
+            $('#hFour').click(function() {
+                player4.hitMe(deck1);
+                message('p', 'fourth');
+            });
+
+            $('#dFour').click(function() {
+                player4.discard();
+                message('p', 'fourth');
+            });
+        });
+
+        const deck1 = new Deck();
+
+        $('#reset').click(function() {
+            deck1.reset();
+            $('p').empty();
+            console.log(deck1);
+        });
+        $('#shuffle').click(function() {
+            deck1.shuffle();
+            console.log(deck1);
+        });
+        //deck1.reset().shuffle();
+    </script>
+</body>
+
+</html>
