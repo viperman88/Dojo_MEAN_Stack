@@ -1,41 +1,44 @@
-h1 {
-    font-size: 44pt;
-    display: inline-block;
-    margin-top: 50px;
+body {
+    background-image: url(http://www.activegamez.com/wp-content/uploads/2017/05/blackjack.png);
 }
 
-.navbar {
+.navbar1, .navbar2, .navbar3, .navbar4 {
+    display: inline-block;
+    border: 2px solid black;
     height: 60px;
-    margin-left: 0px;
-    position: fixed;
+    width: 49%;
+    border-radius: 25px 25px 0px 0px;
+    background-color: black;
+    margin-bottom: -8px;
+    padding-top: 10px;
 }
 
-#first, #second {
+#first, #second, #third, #fourth {
     display: inline-block;
     border: 2px solid black;
-    height: 300px;
+    height: 260px;
     width: 49%;
-    margin-bottom: 10px;
+    margin-bottom: 120px;
     overflow-x: scroll;
-    border-radius: 15px;
-}
-
-#third, #fourth {
-    display: inline-block;
-    border: 2px solid black;
-    height: 300px;
-    width: 49%;
-    overflow-x: scroll;
-    border-radius: 15px;
+    border-radius: 0px 0px 25px 25px;
+    background-color: white;
+    opacity: 0.75;
 }
 
 #btn {
     display: block;
     position: fixed;
-    margin-left: 60px;
+    margin-left: 75px;
 }
 
 #btn1 {
     display: block;
-    margin-top: 30px;
+    margin-left: 230px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+p {
+    font-weight: bold;
+    font-size: 16pt;
 }
