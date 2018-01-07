@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div id="main" class="container">
 
         <div id="btn1" class="btn-group" role="group" aria-label="Basic example">
             <button id="reset" class="btn btn-danger my-2 my-sm-0" type="button">New Game</button>
@@ -132,18 +132,18 @@
                 for (let i = 1; i < 3; i++) {
                     this.hand.push(cardDeck.deal())
                 }
-                comment = `Welcome to the game player ${this.name}. Your hand is ${this.hand}`;
+                comment = `Welcome player ${this.name}. Your hand is ${this.hand}`;
                 return this;
             }
             hitMe(cardDeck) {
                 for (let i = 1; i < 2; i++) {
                     this.hand.push(cardDeck.deal())
                 }
-                comment = `Player ${this.name} asked for a Hit! New hand is ${this.hand}`;
+                comment = `Hit Me! New hand is ${this.hand}`;
                 return this;
             }
             discard() {
-                comment = `Player ${this.name} is folding, or laying for the win!`;
+                comment = `Player ${this.name} folded or is laying for the win!`;
                 for (let i = 0; i < this.hand.length; i++) {
                     this.hand.pop();
                 }
