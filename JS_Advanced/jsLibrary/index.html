@@ -6,6 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://fastcdn.org/Underscore.js/1.8.3/underscore-min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
 
@@ -15,24 +16,111 @@
     </div>
 
     <script>
+        // UNDERSCORE.JS FORMATING
+        let arr = [1, 2, 3, 4, 5, 6];
+
+        const _map = () => {
+            _.map(arr, val => {
+                console.log(val * 2);
+            });
+        };
+        _map();
+
+        console.log('--------');
+
+        const _reduce = () => {
+            console.log(_.reduce(arr, (memo, num) => {
+                return memo + num;
+            }, 0));
+        };
+        _reduce();
+
+        console.log('--------');
+
+        const _find = () => {
+            console.log(_.find(arr, val => {
+                return val % 2 === 0;
+            }));
+        };
+        _find();
+
+        console.log('--------');
+
+        const _filter = () => {
+            console.log(_.filter(arr, val => {
+                return val % 2 === 0;
+            }));
+        };
+        _filter();
+
+        console.log('--------');
+
+        const _reject = () => {
+            console.log(_.reject(arr, val => {
+                return val % 2 === 0;
+            }));
+        };
+        _reject();
+
+        console.log('Dojo library mimic below');
+
+        // LIBRARY TO MIMIC UNDERSCORE.JS
+
         var _ = {
-            map: function() {
-                //code here;
+            map: function(array, iteratee) {
+                for (let i = 0; i < array.length; i++) {
+                    array[i] = iteratee(array[i]);
+                };
+                return array;
             },
-            reduce: function() {
-                // code here;
+            reduce: function(array, iteratee, memo) {
+                for (let i = 0; i < array.length; i++) {
+                    memo = iteratee(memo, array[i]);
+                };
+                return memo;
             },
-            find: function() {
-                // code here;
+            find: function(array, predicate) {
+                for (let i = 0; i < array.length; i++) {
+                    if (predicate(array[i])) {
+                        return array[i];
+                    }
+                };
             },
-            filter: function() {
-                // code here;
+            filter: function(array, predicate) {
+                let newArray = [];
+                for (let i = 0; i < array.length; i++) {
+                    if (predicate(array[i])) {
+                        newArray.push(array[i]);
+                    }
+                };
+                return newArray;
             },
-            reject: function() {
-                // code here;
+            reject: function(array, predicate) {
+                let newArray = [];
+                for (let i = 0; i < array.length; i++) {
+                    if (!predicate(array[i])) {
+                        newArray.push(array[i]);
+                    }
+                };
+                return newArray;
             }
         }
         // you just created a library with 5 methods!
+        console.log(_.map([1, 2, 3], function iteratee(num) {
+            return num * 3;
+        }));
+        console.log(_.reduce([1, 2, 3], function iteratee(memo, num) {
+            return memo + num;
+        }, 0));
+        console.log(_.find([1, 2, 3, 4, 5, 6], function predicate(num) {
+            return num % 2 == 0;
+        }));
+        console.log(_.filter([1, 2, 3, 4, 5, 6], function predicate(num) {
+            return num % 2 == 0;
+        }));
+        console.log(_.reject([1, 2, 3, 4, 5, 6], function predicate(num) {
+            return num % 2 == 0;
+        }));
     </script>
 </body>
 
