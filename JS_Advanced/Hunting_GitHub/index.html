@@ -6,16 +6,27 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://fastcdn.org/Underscore.js/1.8.3/underscore-min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
 
 <body>
     <div class="container">
         <h1>Hunting GitHub</h1>
+        <button type="button" class="btn btn-primary">gitHub request</button>
     </div>
 
     <script>
+        $('button').click(function() {
+            $.get("https://api.github.com/users/viperman88", displayName)
+            // Notice that displayName is a function that takes in 1 parameter (this is the data that comes back from the API)
+            function displayName(data) {
+                console.log(data);
+                if (data.name) {
+                    $('.container').append(`<h3>User Name: ${data.name}</h3>`);
+                }
+            }
+        });
     </script>
 </body>
 
