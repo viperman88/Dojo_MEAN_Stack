@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Fib Nacci</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Fib Nacci</h1>
+    </div>
+
+    <script>
+        // The Fibonacci sequence is a sequence where each number is the sum of its two predecessors.
+        // The sequence starts off like so: (0), 1, 1, 2, 3, 5, 8, etc. The 0 is in parenthesis because
+        // it helps the sequence get started but it is not actually part of the sequence.
+
+        function fib() {
+            // some variables should go here
+            let pos1 = 0;
+            let pos2 = 1;
+            let pos3 = 1;
+
+            function nacci() {
+                console.log(pos3);
+                pos3 = pos1 + pos2;
+                pos1 = pos2;
+                pos2 = pos3;
+            }
+            return nacci
+        }
+        var fibCounter = fib();
+        fibCounter() // should console.log "1"
+        fibCounter() // should console.log "1"
+        fibCounter() // should console.log "2"
+        fibCounter() // should console.log "3"
+        fibCounter() // should console.log "5"
+        fibCounter() // should console.log "8"
+    </script>
+</body>
+
+</html>
