@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Bind Call Apply</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Bind Call Apply</h1>
+        <button name='button'>Click Me</button>
+
+    </div>
+
+    <script>
+        // our test object
+        var customObject = {
+            name: 'California, Eureka',
+            onClick: function(myParam) {
+                console.log("I've been clicked");
+                console.log(myParam, "I've been passed by bind");
+                console.log(this.name);
+            }
+        }
+        var newObject = {
+            name: "West Virginia,  Montani semper liberi"
+        }
+        // modify the button method to this:
+        $('button').click(customObject.onClick.bind(newObject));
+
+        // our behavior on click.
+        //$('button').click(customObject.onClick);
+        //$('button').click(customObject.onClick.bind(customObject));
+        $('button').click(customObject.onClick.bind(customObject, "Bind this argument!"));
+
+        function Ninja(name, age) {
+            this.name = name;
+            this.age = age;
+            // there could be lots of other stuff here!
+        }
+
+        function BlackBelt(name, age) {
+            //Commas!
+            Ninja.call(this, name, age);
+            this.belt = 'black';
+        }
+
+        function YellowBelt(name, age) {
+            //ARRAY
+            Ninja.apply(this, [name, age]);
+            this.belt = 'yellow';
+        }
+
+        function levelUp() {
+            console.log(this.name + " has learned a new kata, in " + this.gender + " favorite language: " + this.language);
+        }
+        var person = {
+            name: 'Lisa',
+            gender: 'her',
+            language: 'JavaScript, duh!'
+        };
+        levelUp.call(person);
+
+        var yB = new YellowBelt('mike', 40);
+        var bB = new BlackBelt('charlie', 29);
+        console.log(bB.name);
+        console.log(yB.name);
+    </script>
+
+</body>
+
+</html>
