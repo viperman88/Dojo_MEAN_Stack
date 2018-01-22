@@ -1,16 +1,17 @@
 module.exports = function() {
     return {
-        add: function(num1, num2) {
-            return num1 + num2;
+        add: function(a, b) {
+            return a + b;
         },
-        multiply: function(num1, num2) {
-            return num1 * num2;
+        multiply: function(a, b) {
+            return a * b;
         },
-        square: function(num) {
-            return num * num;
+        square: function(a) {
+            return a * a;
         },
-        random: function(num1, num2) {
-            return Math.floor(Math.random() * num1) + num2;
+        random: function(a, b) {
+            //return Math.floor(Math.random() * a) + b;
+            return Math.floor(Math.random() * b) + a;
         }
     }
 };
