@@ -1,10 +1,8 @@
-const MathLibrary = require("./mathlib");
-const math = new MathLibrary();
-
-const a = 1;
-const b = 35;
-
-console.log("\nSum of " + a + " and " + b + " is: ", math.add(a, b));
-console.log("Product of " + a + " and " + b + " is: ", math.multiply(a, b));
-console.log("Square of " + a + " is: ", math.square(a));
-console.log("Random number between " + a + " and " + b + ": ", math.random(a, b));
+const MathModule = require("./mathlib");
+const math = new MathModule();
+const a = 5;
+const b = 30;
+console.log(`The sum of ${a} and ${b} is: ${math.add(a, b)}`);
+console.log(`The product of ${a} and ${b} is: ${math.multiply(a, b)}`);
+console.log(`${b} squared is: ${math.square(a)}`);
+console.log(`Here is a random number between ${a} and ${b}: ${math.random(a, b)}`);
