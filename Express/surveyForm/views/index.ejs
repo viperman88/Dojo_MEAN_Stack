@@ -13,7 +13,42 @@
 </head>
 
 <body>
-    <h1>Survey Form</h1>
+    <div class="container">
+        <h1>Survey Form</h1>
+        <hr>
+        <form action="/results" method="post">
+            <div class="form-group col-sm-6 mb-2">
+                <label>Your Name</label>
+                <input type="text" class="form-control" name="name" placeholder="Full Name">
+            </div>
+            <div class="form-group col-sm-6 mb-2">
+                <label>Dojo Location</label>
+                <select class="form-control" name="location">
+                    <option value="" disabled selected>Select your option</option>
+                    <option>Dallas</option>
+                    <option>Washington DC</option>
+                    <option>Seattle</option>
+                    <option>San Fransisco</option>
+                </select>
+            </div>
+            <div class="form-group col-sm-6 mb-2">
+                <label>Favorite Language</label>
+                <select class="form-control" name="language">
+                    <option value="" disabled selected>Select your option</option>
+                    <option>JavaScript</option>
+                    <option>Python</option>
+                    <option>Ruby</option>
+                    <option>IOS</option>
+                </select>
+            </div>
+            <div class="form-group col-sm-8 mb-2">
+                <label>Comment (optional)</label>
+                <textarea class="form-control" rows="5" name="comment"></textarea>
+            </div>
+            <hr>
+            <button class="btn btn-outline-primary" type="submit">Submit</button>
+        </form>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
