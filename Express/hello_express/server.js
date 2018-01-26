@@ -30,6 +30,29 @@ app.post('/process', (request, response) => {
     })
 })
 // Tell the express app to listen on port 8000
-app.listen(port, () => console.log(`Listening on port ${port}`));
+
+//No socket.io
+//app.listen(port, () => console.log(`Listening on port ${port}`));
+
+//With socket.io
+var server = app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+});
+var io = require('socket.io').listen(server);
+
+io.sockets.on('connection', function(socket) {
+    console.log("Client/socket is connected!");
+    console.log("Client/socket id is: ", socket.id);
+    // all the server socket code goes in here
+    socket.on("button_clicked", function(data) {
+        console.log('Someone clicked a button!  Reason: ' + data.reason);
+        socket.emit('server_response', {
+            response: "sockets are the best!"
+        });
+    })
+
+})
+
+
 // this line will almost always be at the end of your server.js file (we only tell
 //the server to listen after we have set up all of our rules)
