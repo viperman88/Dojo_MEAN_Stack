@@ -1,0 +1,25 @@
+.container {
+    text-align: center;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+
+#lgButton {
+    height: 290px;
+    font-size: 40px;
+    font-weight: bold;
+    border: 10px dashed #CB444A;
+    border-radius: 180px;
+}
+
+#reset {
+    border: 3px solid #317BF6;
+    font-weight: bold;
+    border-radius: 75px;
+}
+
+h1 {
+    text-shadow: 2px 2px grey;
+}
