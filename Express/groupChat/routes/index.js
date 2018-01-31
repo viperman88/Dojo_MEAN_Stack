@@ -1,5 +1,6 @@
 let users = {};
 let messages = [];
+
 module.exports = function Route(app, server) {
 
     const io = require('socket.io').listen(server);
@@ -7,21 +8,19 @@ module.exports = function Route(app, server) {
 
         socket.on("page_load", function(data) {
             console.log("new user", data);
-            // Add user to users object. We will use socket id to uniquely identify each user.
-            // This is a stand in for a database connection.
+            // Use socket.id for users id
             users[socket.id] = data.name;
             // Need to update new user with all current users.
-            socket.broadcast.emit('new_user', {
+            socket.emit('new_user', {
                 users: users
             });
-
+            // Update all other users with just the new user.
+            let temp_user = {};
+            temp_user[socket.id] = data.name;
+            socket.broadcast.emit('new_user', {
+                users: temp_user
+            });
         })
-
-        var temp_user = {};
-        temp_user[socket.id] = data.name;
-        socket.broadcast.emit('new_user', {
-            users: temp_user
-        });
 
         socket.on('new_message', function(data) {
             messages.push({

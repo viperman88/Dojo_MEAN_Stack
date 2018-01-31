@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div id="container" class="container">
         <div id="error"></div>
         <h1>Group Chat</h1>
         <hr>
@@ -45,6 +45,7 @@
             socket.emit("page_load", {
                 name: name
             });
+            current_user = true;
         }
         newUser();
 
