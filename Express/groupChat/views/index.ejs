@@ -14,20 +14,18 @@
 
 <body>
     <div class="container">
+        <div id="error"></div>
         <h1>Group Chat</h1>
         <hr>
         <h3>Conversation Board:</h3>
-        <div id="group">
-
-        </div>
-        <form>
-            <div id="content" class="form-group">
-
-            </div>
-            <input type="text" class="form-control" id="message" placeholder="Enter Your Message Here">
+        <div id="message_board"></div>
+        <h5>Users Online</h5>
+        <div id="online_users"></div>
+        <form action="" id="login_form">
+            <input type="text" class="form-control" id="message" name="name" placeholder="Enter Your Message Here">
         </form>
         <hr>
-        <button type="button" class="btn btn-primary float-right">Send Message</button>
+        <button type="submit" id="button" class="btn btn-primary float-right">Send Message</button>
     </div>
 
     <!-- Optional JavaScript -->
@@ -40,9 +38,32 @@
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
     <script type="text/javascript">
         // this triggers the connection event in our server!
-        let socket = io.connect();
-        let promptName = prompt('Name:');
-        // // we'll write all the socket stuff after the above line!
+        const socket = io.connect();
+
+        var newUser = function() {
+            var name = prompt("Name:");
+            socket.emit("page_load", {
+                name: name
+            });
+        }
+        newUser();
+
+        $('#button').click(function() {
+            socket.emit('new_message', {
+                message: $('#message').val()
+            });
+            $('#message').val('')
+        })
+        socket.on('new_user', function(data) {
+            for (let key in data.users) {
+                $("#online_users").append(`<p><b>${data.users[key]}</b></p>`);
+            }
+        });
+        socket.on('post_message', function(data) {
+            for (let i = 0; i < data.messages.length; i++) {
+                $("#message_board").prepend(`<p>${data.messages[i].name} says: ${data.messages[i].message}`);
+            }
+        });
     </script>
 </body>
 
