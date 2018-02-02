@@ -2,7 +2,7 @@
     padding: 5px;
 }
 
-#message_board {
+#chat_board {
     border: 1px solid black;
     height: 300px;
     margin-bottom: 15px;
@@ -10,7 +10,7 @@
     padding: 5px;
 }
 
-#online_users {
+#users_online {
     border: 1px solid black;
     height: 200px;
     width: 25%;

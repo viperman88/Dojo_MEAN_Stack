@@ -14,18 +14,27 @@
 
 <body>
     <div id="container" class="container">
-        <div id="error"></div>
+        <!-- <div id="error"></div> Have not implemented feature yet -->
         <h1>Group Chat</h1>
         <hr>
+
         <h3>Conversation Board:</h3>
-        <div id="message_board"></div>
+        <div id="chat_board">
+
+        </div>
+
         <h5>Users Online</h5>
-        <div id="online_users"></div>
+        <div id="users_online">
+
+        </div>
+
         <form action="" id="login_form">
             <input type="text" class="form-control" id="message" name="name" placeholder="Enter Your Message Here">
         </form>
         <hr>
+
         <button type="submit" id="button" class="btn btn-primary float-right">Send Message</button>
+
     </div>
 
     <!-- Optional JavaScript -->
@@ -57,12 +66,12 @@
         })
         socket.on('new_user', function(data) {
             for (let key in data.users) {
-                $("#online_users").append(`<p><b>${data.users[key]}</b></p>`);
+                $("#users_online").append(`<p><b>${data.users[key]}</b></p>`);
             }
         });
         socket.on('post_message', function(data) {
             for (let i = 0; i < data.messages.length; i++) {
-                $("#message_board").prepend(`<p>${data.messages[i].name} says: ${data.messages[i].message}`);
+                $("#chat_board").prepend(`<p>${data.messages[i].name}: ${data.messages[i].message}`);
             }
         });
     </script>

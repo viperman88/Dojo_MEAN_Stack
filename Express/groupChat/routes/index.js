@@ -10,11 +10,11 @@ module.exports = function Route(app, server) {
             console.log("new user", data);
             // Use socket.id for users id
             users[socket.id] = data.name;
-            // Need to update new user with all current users.
+            // Update new_user with current users
             socket.emit('new_user', {
                 users: users
             });
-            // Update all other users with just the new user.
+            // Update users with the new_user
             let temp_user = {};
             temp_user[socket.id] = data.name;
             socket.broadcast.emit('new_user', {
@@ -35,7 +35,7 @@ module.exports = function Route(app, server) {
             });
         })
     })
-    // root route to render the index.ejs file
+    // lets handle routes "/" and render index.ejs
     app.get("/", function(request, response) {
         response.render('index')
     })
