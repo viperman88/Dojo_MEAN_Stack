@@ -1,25 +1,25 @@
-var express = require('express');
-var mongoose = require('mongoose');
+const express = require('express');
+const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/basic_mongoose');
-var UserSchema = new mongoose.Schema({
+let UserSchema = new mongoose.Schema({
     name: String,
     age: Number
 })
 mongoose.model('User', UserSchema); // We are setting this Schema in our Models as 'User'
-var User = mongoose.model('User') // We are retrieving this Schema from our Models, named 'User'
+let User = mongoose.model('User') // We are retrieving this Schema from our Models, named 'User'
 mongoose.Promise = global.Promise;
 
 // Create an Express App
-var app = express();
+const app = express();
 // Require body-parser (to receive post data from clients)
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 // Integrate body-parser with our App
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 // Require path
-var path = require('path');
+const path = require('path');
 // Setting our Static Folder Directory
 app.use(express.static(path.join(__dirname, './static')));
 // Setting our Views Folder Directory
@@ -47,7 +47,7 @@ app.get('/', function(req, res) {
 app.post('/users', function(req, res) {
     console.log("POST DATA", req.body);
     // create a new User with the name and age corresponding to those from req.body
-    var user = new User({
+    let user = new User({
         name: req.body.name,
         age: req.body.age
     });
