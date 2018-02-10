@@ -1,0 +1,12 @@
+.currentUsers {
+    height: 120px;
+    width: 20%;
+    border: solid 1px silver;
+    padding: 5px;
+    overflow: auto;
+    margin-left: 15px;
+}
+
+h3 {
+    margin-left: 15px;
+}
