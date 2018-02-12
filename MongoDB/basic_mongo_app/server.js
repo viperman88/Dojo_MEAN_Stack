@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/basic_mongoose');
+// Create a Schema for Users
 let UserSchema = new mongoose.Schema({
     name: String,
     age: Number
@@ -29,7 +30,9 @@ app.set('view engine', 'ejs');
 // Routes
 // Root Request
 app.get('/', function(req, res) {
-    // This is where we will retrieve the users from the database and include them in the view page we will be rendering.
+    // Using the User Schema...
+    // ...retrieve all records matching {} from database
+    // Include them for use on page to be be rendered.
     User.find({}, function(err, users) {
         console.log("finding...");
         if (err) {
