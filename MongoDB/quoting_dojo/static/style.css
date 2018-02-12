@@ -1,0 +1,14 @@
+#user_info {
+    height: 500px;
+    overflow: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#user_info h4 {
+    margin-left: 30px;
+}
+
+#user_info p {
+    margin-left: 60px;
+}
