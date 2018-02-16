@@ -8,15 +8,69 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
     <title>Mongoose Dashboard</title>
 </head>
 
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <h1>Mongoose Dashboard</h1>
+            <a id="title" class="navbar-brand" href="#">Mongoose Dashboard Primates</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/primates">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/primates/new">Create New Primate</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
+
+        <h5>Primate Info:</h5>
+
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Origin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (const primate of primates) { %>
+                    <tr>
+                        <td>
+                            <a href="primates/<%= primate._id %>">
+                                <%= primate.name %>
+                            </a>
+                        </td>
+                        <td>
+                            <%= primate.color %>
+                        </td>
+                        <td>
+                            <%= primate.weight %>
+                        </td>
+                        <td>
+                            <%= primate.origin %>
+                        </td>
+                        <td>
+                            <a class="btn btn-outline-primary btn-sm" href="primates/<%= primate._id %>/edit/" role="button">Edit</a>
+                        </td>
+                        <td>
+                            <form action="primates/<%= primate._id %>/delete" method='post'>
+                                <input class="btn btn-outline-danger btn-sm" type="submit" value="Delete">
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+
     </div>
 
     <!-- Optional JavaScript -->

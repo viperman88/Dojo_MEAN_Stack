@@ -8,15 +8,47 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
     <title>Mongoose Dashboard</title>
 </head>
 
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <h1>Create New Animals</h1>
+            <h1>Show Primate #<%= primate.id %></h1>
         </nav>
+
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Origin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <%= primate.name %>
+                    </td>
+                    <td>
+                        <%= primate.color %>
+                    </td>
+                    <td>
+                        <%= primate.weight %>
+                    </td>
+                    <td>
+                        <%= primate.origin %>
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-primary btn-sm" href="/primates" role="button">Home</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-danger btn-sm" href="/primates/<%= primate._id %>/edit" role="button">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <!-- Optional JavaScript -->

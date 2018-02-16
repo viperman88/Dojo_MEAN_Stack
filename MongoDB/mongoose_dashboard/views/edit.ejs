@@ -8,15 +8,35 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
     <title>Mongoose Dashboard</title>
 </head>
 
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <h1>Edit Animals</h1>
+            <h1>Edit Primate #<%= primate.id %>!</h1>
         </nav>
+
+        <form action="/primates/<%= primate.id %>" method='post'>
+            <div class="form-group">
+                <label>Current Name: <%= primate.name %></label>
+                <input type="text" class="form-control" name="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label>Current Color: <%= primate.color %></label>
+                <input type="text" class="form-control" name="color" placeholder="Color">
+            </div>
+            <div class="form-group">
+                <label>Current Weight: <%= primate.weight %></label>
+                <input type="text" class="form-control" name="weight" placeholder="Weight">
+            </div>
+            <div class="form-group">
+                <label>Current Origin: <%= primate.origin %></label>
+                <input type="text" class="form-control" name="origin" placeholder="Origin">
+            </div>
+            <button type="submit" class="btn btn-primary">Edit Primate</button>
+            <a class="btn btn-primary" href="/primates" role="button">Home</a>
+        </form>
     </div>
 
     <!-- Optional JavaScript -->
