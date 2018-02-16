@@ -1,21 +1,21 @@
 // Require modules
 const express = require('express');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser'); // Require body-parser (to receive post data from clients)
 const mongoose = require('mongoose');
 const path = require('path');
 const port = process.env.PORT || 8000;
-const app = express();
+const app = express(); // Create Express app
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true })); // Integrate body-parser with our App
 app.use(express.static(path.join(__dirname, './static')));
 
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 
-mongoose.connect('mongodb://localhost/primates_db');
-mongoose.connection.on('connected', () => console.log('mongodb connected'));
+mongoose.connect('mongodb://localhost/primates_db'); // This is how we connect to the mongodb database using mongoose
+mongoose.connection.on('connected', () => console.log('mongodb connected')); // Lets us know we are connected
 
-const primateSchema = new mongoose.Schema({
+const primateSchema = new mongoose.Schema({ // Create a Schema for Primate
     name: String,
     color: String,
     weight: Number,
@@ -23,6 +23,7 @@ const primateSchema = new mongoose.Schema({
 })
 const Primate = mongoose.model('Primate', primateSchema)
 
+// Routes
 app.get('/primates', (req, res) => {
     Primate.find({})
         .then(primates => {
@@ -93,4 +94,5 @@ app.post('/primates/:id/delete', function(req, res){
         })
 });
 
+// Setting our Server to Listen on Port: 8000
 app.listen(port, () => console.log(`express listening on port ${port}`));
