@@ -22,16 +22,16 @@ const primateSchema = new mongoose.Schema({ // Create a Schema (Bluprint) for mo
     origin: String
 })
 // Primate retrieves schema set in models = Setting schema in models as Primate
-// mongoose WILL create the appropriate collection in database 
+// mongoose WILL create the appropriate collection in database
 // with the appropriate naming (plural for collection names)!
 const Primate = mongoose.model('Primate', primateSchema)
 
 // Routes
 app.get('/primates', (req, res) => {
     Primate.find({})
-        .then(primates => {
+        .then(primates => { // On success, then 'promise'
             console.log(primates)
-            res.render('index', { primates: primates });
+            res.render('index', { primates });
         })
         .catch(err => {
             console.log('error caught', err);
