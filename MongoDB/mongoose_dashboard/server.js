@@ -13,14 +13,17 @@ app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 
 mongoose.connect('mongodb://localhost/primates_db'); // This is how we connect to the mongodb database using mongoose
-mongoose.connection.on('connected', () => console.log('mongodb connected')); // Lets us know we are connected
+mongoose.connection.on('connected', () => console.log('mongodb connected')); // Listen for connection and log connected
 
-const primateSchema = new mongoose.Schema({ // Create a Schema for Primate
+const primateSchema = new mongoose.Schema({ // Create a Schema (Bluprint) for model
     name: String,
     color: String,
     weight: Number,
     origin: String
 })
+// Primate retrieves schema set in models = Setting schema in models as Primate
+// mongoose WILL create the appropriate collection in database 
+// with the appropriate naming (plural for collection names)!
 const Primate = mongoose.model('Primate', primateSchema)
 
 // Routes
