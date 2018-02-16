@@ -18,24 +18,25 @@
         </nav>
 
         <form action="/primates/<%= primate.id %>" method='post'>
-            <div class="form-group">
-                <label>Current Name: <%= primate.name %></label>
+            <div class="form-group col-sm-6">
+                <label><b>Current Name:</b> <%= primate.name %></label>
                 <input type="text" class="form-control" name="name" placeholder="Name">
             </div>
-            <div class="form-group">
-                <label>Current Color: <%= primate.color %></label>
+            <div class="form-group col-sm-6">
+                <label><b>Current Color:</b> <%= primate.color %></label>
                 <input type="text" class="form-control" name="color" placeholder="Color">
             </div>
-            <div class="form-group">
-                <label>Current Weight: <%= primate.weight %></label>
+            <div class="form-group col-sm-6">
+                <label><b>Current Weight:</b> <%= primate.weight %></label>
                 <input type="text" class="form-control" name="weight" placeholder="Weight">
             </div>
-            <div class="form-group">
-                <label>Current Origin: <%= primate.origin %></label>
+            <div class="form-group col-sm-6">
+                <label><b>Current Origin:</b> <%= primate.origin %></label>
                 <input type="text" class="form-control" name="origin" placeholder="Origin">
             </div>
-            <button type="submit" class="btn btn-primary">Edit Primate</button>
-            <a class="btn btn-primary" href="/primates" role="button">Home</a>
+            <hr>
+            <button type="submit" class="btn btn-outline-primary">Edit Primate</button>
+            <a class="btn btn-outline-danger" href="/primates" role="button">Home</a>
         </form>
     </div>
 
