@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="stylesheet" href="style.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Message Board</title>
@@ -16,24 +16,64 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <h1>The Dojo Message Board</h1>
         </nav>
-        <form>
-            <div class="form-group col-sm-6">
+
+        <form action="/message" method="post">
+            <div id="new_message" class="form-group col-sm-6">
                 <label>Name:</label>
                 <input type="text" name="name" class="form-control" placeholder="Name">
             </div>
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm">
                 <label>Message:</label>
                 <textarea name="message" rows="3" class="form-control" placeholder="Message"></textarea>
             </div>
-            <button type="submit" class="btn btn-outline-primary">Submit</button>
+            <button type="submit" id="message_button" class="btn btn-outline-primary">Post Message</button>
         </form>
-    </div>
+        <hr>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <% if (typeof(error) !== 'undefined' ) { %>
+            <% for (const key in error) { %>
+                <h3><%= error[key].message %></h3>
+            <% } %>
+        <% } else { %>
+            <div id="message">
+                <% for (const message of messages) { %>
+                    <h5><b>Name:</b> <%= message.name %></h5>
+                    <h5><b>Message:</b> <%= message.message %></h5>
+                    <div id="comment">
+                        <% for (const comment of message.comments) { %>
+                            <p><b>Name:</b>
+                                <%= comment.name %>
+                            </p>
+                            <p><b>Comment:</b>
+                                <%= comment.comment %>
+                            </p>
+                            ~
+                        <% } %>
+                        <form action="/comment" method="post">
+                            <div class="form-group col-6">
+                                <label>Name:</label>
+                                <input type="text" name="name" class="form-control" placeholder="Name">
+                            </div>
+                            <div class="form-group col-sm">
+                                <label>Comment:</label>
+                                <textarea name="comment" rows="3" class="form-control" placeholder="Message"></textarea>
+                            </div>
+                            <div>
+                                <input type="hidden" name="_message" value="<%= message._id %>">
+                            </div>
+                            <button type="submit" id="comment_button" class="btn btn-outline-primary">Post Comment</button>
+                        </form>
+                    </div>
+                    <hr>
+                <% } %>
+            </div>
+        <% } %>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>

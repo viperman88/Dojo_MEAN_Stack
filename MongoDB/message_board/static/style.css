@@ -1,0 +1,21 @@
+#message_button {
+    margin-left: 13px;
+}
+
+#comment {
+    padding-left: 60px;
+}
+
+#comment>p {
+    margin-left: 13px;
+    margin-bottom: 0px;
+}
+
+#comment>p:nth-child(even) {
+    margin-left: 13px;
+    margin-bottom: 10px;
+}
+
+#comment_button {
+    margin-left: 13px;
+}
