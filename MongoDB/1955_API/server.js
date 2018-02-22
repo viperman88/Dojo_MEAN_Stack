@@ -7,6 +7,7 @@ const express = require('express'),
 
 // configure body-parser to read JSON
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
 
 require('./server/config/mongoose.js');
 require('./server/config/routes.js')(app);
