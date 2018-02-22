@@ -12,8 +12,5 @@ app.use(bodyParser.urlencoded({ extended: true }));
 require('./server/config/mongoose.js');
 require('./server/config/routes.js')(app);
 
-//utilize global Promise to replace mongoose Promise
-mongoose.Promise = global.Promise;
-
 // Setting our Server to Listen on Port: 8000
 app.listen(port, () => console.log(`express listening on port ${port}`));
