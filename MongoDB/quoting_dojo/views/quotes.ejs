@@ -18,11 +18,11 @@
             <h1>Here Are Some Awesome Quotes!!!</h1>
         </nav>
         <section id="user_info">
-            <% for( const user of users) { %>
-                <h4>'<%= user.quote %>'</h4>
-                <p>-<b><%= user.name %></b> at <%= user.date%></p>
+            <% for (const quote of quotes) { %>
+                <h4>"<%= quote.quote %>"</h4>
+                <p> - <%= quote.name %> at <%= moment(quote.createdAt).format( 'h:mma MMMM DD YYYY') %></p>
                 <hr>
-            <% } %>
+                <% } %>
         </section>
         <a class="btn btn-outline-primary" href="/" role="button">Return Home</a>
     </div>
