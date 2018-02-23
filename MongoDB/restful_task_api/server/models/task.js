@@ -1,5 +1,6 @@
 const mongoose = require("../config/mongoose.js");
 const { Schema } = mongoose;
+
 const taskSchema = new Schema({
     title: {
         type: String,
@@ -25,6 +26,8 @@ const taskSchema = new Schema({
         default: Date.now
     },
 });
+
+// const Task 'GETS' schema that was 'SET' in our Models as 'Task'
 const Task = mongoose.model("Task", taskSchema);
 
 module.exports = Task;

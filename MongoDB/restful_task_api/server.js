@@ -10,6 +10,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
 require('./server/config/mongoose.js');
+// require routes.js and invoke 'app' callback 
 require('./server/config/routes.js')(app);
 
 // Setting our Server to Listen on Port: 8000

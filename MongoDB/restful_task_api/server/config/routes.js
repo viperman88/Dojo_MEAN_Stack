@@ -2,6 +2,7 @@ const controller = require('../controllers/task.js'),
     mongoose = require('mongoose'),
     Task = mongoose.model('Task');
 
+// export routes and set them to the 'app' callback
 module.exports = app => {
     app.get("/", controller.findAll);
     app.get("/:id", controller.findOne);
