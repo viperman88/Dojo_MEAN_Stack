@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const User = require("../models/quotes.js");
-const moment = require("moment");
+const mongoose = require('mongoose'),
+    User = mongoose.model('User'),
+    moment = require("moment");
 
 module.exports =  {
     create: (req, res) => {
