@@ -5,14 +5,20 @@ const mongoose = require('mongoose'),
 
 module.exports = {
     index: (req, res) => {
+        // if (req.session.id) {
+        //     req.session.destroy();
+        // }
         res.render('index')
+    },
+    new_user: (req, res) => {
+        res.render('register')
     },
     register: (req, res) => {
         const error = [];
         console.log('req body', req.body);
         if (req.body.password != req.body.confirm_password) {
             error.push('Passwords does not match');
-            res.render('index', { error })
+            res.render('register', { error })
         } else if (req.body.password === req.body.confirm_password) {
             User.create(req.body)
                 .then(user => {
@@ -25,7 +31,7 @@ module.exports = {
                         error.push(err.errors[key].message);
                     }
                     console.log(error);
-                    res.render('index', { error })
+                    res.render('register', { error })
                 });
         }
     },
@@ -33,7 +39,6 @@ module.exports = {
         console.log('req body', req.body);
         User.findOne({email: req.body.email})
             .then(user => {
-                console.log(user);
                 return bcrypt.compare(req.body.password, user.password)
                     .then(() => {
                         console.log('logged in')
@@ -42,10 +47,15 @@ module.exports = {
                     })
             })
             .catch(err => {
-                console.log('errored');
+                console.log('error');
                 const error = [];
                 error.push('Email/Password not valid');
                 res.render('index', { error });
             });
     },
+    logout: (req, res) => {
+        console.log('user logged out')
+		req.session.destroy();
+		res.redirect("/");
+    }
 }

@@ -7,13 +7,13 @@ const { Schema } = mongoose;
 const logRegSchema = new mongoose.Schema({ // Create a Schema (Bluprint) for model
     first_name: {
         type: String,
-        required: [true, 'Name is required'],
+        required: [true, 'first name required'],
         minlength: [2, 'Name must be min 2 characters'],
         trim: true
     },
     last_name: {
         type: String,
-        required: [true, 'Name is required'],
+        required: [true, 'last name required'],
         minlength: [2, 'Name must be min 2 characters'],
         trim: true
     },
@@ -44,6 +44,25 @@ const logRegSchema = new mongoose.Schema({ // Create a Schema (Bluprint) for mod
         type: Date,
         required: [true, 'must enter birthday'],
     }
+},
+    {timestamps: true}
+);
+
+logRegSchema.plugin(validator, { message: "Email address already exists" });
+
+logRegSchema.pre("save", function(next) {
+    if(!this.isModified('password')) {
+        return next();
+    }
+    bcrypt.hash(this.password, 10)
+        .then(hashed_password => {
+            console.log(hashed_password);
+            this.password = hashed_password;
+            next();
+        })
+        .catch(error => {
+            next(error);
+        });
 });
 
 // logRegSchema retrieves schema set in models = Setting schema in models as User

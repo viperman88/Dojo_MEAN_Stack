@@ -19,9 +19,4 @@ fs.readdirSync(modelsPath).forEach(file => {
     if(reg.test(file)) {
         require(path.join(modelsPath, file));
     }
-
-	// if(file.indexOf('.js') >= 0) {
-	// 	// require the file (this runs the model file which registers the schema)
-	// 	require(modelsPath + '/' + file);
-	// }
 });

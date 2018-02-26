@@ -4,6 +4,8 @@ const controller = require('../controllers/users.js'),
 
 module.exports = app => {
     app.get('/', controller.index);
+    app.post('/', controller.login);
+    app.get('/register', controller.new_user);
     app.post('/register', controller.register);
-    app.post('/login', controller.login);    
+    app.get("/logout", controller.logout);
 }

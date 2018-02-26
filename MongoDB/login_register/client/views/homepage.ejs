@@ -19,6 +19,13 @@
         </nav>
 
         <h3>Hello there <%= user.first_name %>! Welcome to the club!</h3>
+        <hr>
+        <b><p>Name: <%= user.first_name %> <%= user.last_name %></p></b>
+        <b><p>Email: <%= user.email %></p></b>
+        <b><p>Birthday: <%= user.birthday %></p></b>
+        <hr>
+        <a href="/"><button type="button" class="btn btn-outline-primary col-sm-6">Home</button></a>
+        <a href="/logout"><button type="button" class="btn btn-outline-danger col-sm-6">Logout User</button></a>
 
     </div>
 
