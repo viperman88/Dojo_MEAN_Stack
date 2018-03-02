@@ -1,0 +1,11 @@
+h1 {
+  text-align: center;
+}
+
+div.box {
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+  border: 1px solid black;
+  margin-left: 5px;
+}
