@@ -1,0 +1,16 @@
+<div class="container">
+
+  <h1>{{ title }}</h1>
+
+  <div class="btn-group btn-group-lg">
+    <button (click)="getTimeByZone('EST')" [ngClass]="{selected: selectedTimezone === 'EST'}" class='btn btn-outline-success'>EST</button>
+    <button (click)="getTimeByZone('CST')" [ngClass]="{selected: selectedTimezone === 'CST'}" class='btn btn-outline-primary'>CST</button>
+    <button (click)="getTimeByZone('MST')" [ngClass]="{selected: selectedTimezone === 'MST'}" class='btn btn-outline-success'>MST</button>
+    <button (click)="getTimeByZone('PST')" [ngClass]="{selected: selectedTimezone === 'PST'}" class='btn btn-outline-primary'>PST</button>
+    <button (click)="getTimeByZone(null)" [ngClass]="{selected: selectedTimezone === null}" class='btn btn-outline-danger'>Clear</button>
+  </div>
+
+  <h3 *ngIf='selectedTimezone === null'>Click on Time Zone to Select</h3>
+  <h3 *ngIf='selectedTimezone !== null'>{{time | date:'mediumTime'}}, {{ selectedTimezone }}</h3>
+
+</div>
