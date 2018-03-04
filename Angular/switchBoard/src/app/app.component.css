@@ -1,0 +1,24 @@
+
+.switch {
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+  margin-right: 2px;
+  background-color: #7B4316;
+  border: 3px solid black;
+  border-radius: 10px;
+}
+
+.onBtnClicked {
+  background-color: green;
+}
+
+button {
+  background-color: red;
+  width: 60px;
+  height: 60px;
+  margin-left: 0px;
+  margin-top: 7px;
+  border:2px solid black;
+  border-radius: 10px;
+}

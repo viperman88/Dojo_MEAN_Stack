@@ -1,0 +1,15 @@
+<div class="container" style="text-align:center">
+  <h1>{{ title }}</h1>
+
+  <!-- <div class="switch" *ngFor="let switch of switchArr; let idx = index">
+    <div class="box"><button id='button' class='btn btn-success' *ngIf="switch" [ngClass]="{'onBtnClicked': switch}" (click)="switchChange(idx)">ON</button></div>
+    <div class="box"><button id='button2' class='btn btn-success' *ngIf="!switch" [ngClass]="{'onBtnClicked': switch}" (click)="switchChange(idx)">OFF</button></div>
+  </div> -->
+
+  <div class="switch" *ngFor="let switch of switchArr; let idx = index">
+      <button *ngIf="switch" [ngClass]="{'onBtnClicked': switch}" (click)="switchChange(idx)">ON</button>
+      <button *ngIf="!switch" [ngClass]="{'onBtnClicked': switch}" (click)="switchChange(idx)">OFF</button>
+    </div>
+
+</div>
+
