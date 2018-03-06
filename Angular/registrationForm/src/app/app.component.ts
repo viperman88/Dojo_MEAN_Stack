@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // <-- Import FormsModule
+import { FormsModule, NgForm } from '@angular/forms'; // <-- Import FormsModule
 import { User } from './user';
 
 @Component({
@@ -7,13 +7,17 @@ import { User } from './user';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'Registration Form';
-
-  user = new User();
-  users = [];
-  onSubmit() {
+  user: User = new User();
+  users: Array<User> = [];
+  onSubmit(event: Event, form: NgForm) {
+    event.preventDefault();
+    console.log('submitting form', form);
     this.users.push(this.user);
+    console.log(this.users);
     this.user = new User();
+    form.resetForm();
   }
 }
