@@ -28,11 +28,8 @@
       >
     </div>
     <span class="errors" *ngIf='(fName.touched || fName.dirty) && fName.errors' class="alert alert-danger">
-      <span class="errors" *ngIf='fName.errors.required'>
-        First Name is required
-      </span>
-      <span class="errors" *ngIf='fName.errors.minlength'>
-        First Name must be at least {{ fName.errors.minlength.requiredLength }} characters
+      <span class="errors" *ngIf='!fName.valid'>
+        First Name is required, First Name must be at least 2 characters
       </span>
     </span>
 
@@ -51,11 +48,8 @@
       >
     </div>
     <span class="errors" *ngIf='(lName.touched || lName.dirty) && lName.errors' class="alert alert-danger">
-      <span class="errors" *ngIf='lName.errors.required'>
-        Last Name is required
-      </span>
-      <span class="errors" *ngIf='lName.errors.minlength'>
-        Last Name must be at least {{ lName.errors.minlength.requiredLength }} characters
+      <span class="errors" *ngIf='!lName.valid'>
+        Last Name is required, Last Name must be at least 2 characters
       </span>
     </span>
 
@@ -74,11 +68,8 @@
       >
     </div>
     <span class="errors" *ngIf='(email.touched || email.dirty) && email.errors' class="alert alert-danger">
-      <span class="errors" *ngIf='email.errors.required'>
-        Email is required
-      </span>
-      <span class="errors" *ngIf='email.errors.pattern'>
-        Email must be in proper format
+      <span class="errors" *ngIf='!email.valid'>
+        Email is required, Email must be in proper format
       </span>
     </span>
 
@@ -98,11 +89,8 @@
       >
     </div>
     <span class="errors" *ngIf='(password.touched || password.dirty) && password.errors' class="alert alert-danger">
-      <span class="errors" *ngIf='password.errors.required'>
-        Password is required
-      </span>
-      <span class="errors" *ngIf='password.errors.pattern'>
-        Password must be 8 characters long, and contain a number, uppercase and special character
+      <span class="errors" *ngIf='!password.valid'>
+        Password is required, Password must be 8 characters long, and contain a number, uppercase and special character
       </span>
     </span>
 
@@ -143,7 +131,7 @@
       >
     </div>
     <span class="errors" *ngIf='(address.touched || address.dirty) && address.errors' class="alert alert-danger">
-      <span class="errors" *ngIf='address.errors.required'>
+        <span class="errors" *ngIf='!address.valid'>
         Address is required
       </span>
     </span>
@@ -173,7 +161,7 @@
           >
         </div>
         <span class="errors" *ngIf='(city.touched || city.dirty) && city.errors' class="alert alert-danger">
-          <span class="errors" *ngIf='city.errors.required'>
+          <span class="errors" *ngIf='!city.valid'>
             City is required
           </span>
         </span>
@@ -243,7 +231,7 @@
           </select>
         </div>
         <span class="errors" *ngIf='(state.touched || state.dirty) && state.errors' class="alert alert-danger">
-          <span class="errors" *ngIf='state.errors.required'>
+          <span class="errors" *ngIf='!state.valid'>
             State is required
           </span>
         </span>
@@ -260,7 +248,7 @@
           >
         </div>
         <span class="errors" *ngIf='(zip.touched || zip.dirty) && zip.errors' class="alert alert-danger">
-          <span class="errors" *ngIf='zip.errors.required'>
+          <span class="errors" *ngIf='!zip.valid'>
             Zip is required
           </span>
         </span>
