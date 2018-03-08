@@ -1,0 +1,7 @@
+<div class="box">
+  <h4>Human</h4>
+  <p>Power Level: {{powerLevel}}</p>
+  <h5 *ngIf="currentPower > 9000 && currentPower <= 20000">Over 9000!</h5>
+  <h5 *ngIf="currentPower > 20000 && currentPower !== 50000">Superlative!</h5>
+  <h5 *ngIf="currentPower === 50000">The One</h5>
+</div>

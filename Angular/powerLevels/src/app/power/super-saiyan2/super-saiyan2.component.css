@@ -1,0 +1,18 @@
+h4 {
+  margin-bottom: 2px;
+}
+
+h5 {
+  margin-bottom: 2px;
+}
+
+.box{
+  height: 110px;
+  border:1px solid black;
+  padding: 5%;
+  margin-bottom:15px;
+}
+
+.box > p {
+  margin-bottom: 2px;
+}
