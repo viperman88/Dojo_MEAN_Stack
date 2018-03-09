@@ -1,0 +1,14 @@
+<h3>Quote List</h3>
+<div id="quotes">
+  <main id="list" *ngFor="let user of userInfo">
+    <div id="content">
+      <p>{{ user.userQuote }} - <b>{{ user.name }}</b></p>
+    </div>
+    <div>
+      <button (click)="addVote()" type="button" class="btn btn-outline-success btn-sm">Vote Up</button>
+      <button (click)="subtractVote()" type="button" class="btn btn-outline-warning btn-sm">Down Up</button>
+      <button (click)="delete()" type="button" class="btn btn-outline-danger btn-sm">Delete</button>
+      <h5>+{{ vote }}</h5>
+    </div>
+  </main>
+</div>

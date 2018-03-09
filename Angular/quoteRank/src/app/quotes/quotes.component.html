@@ -1,0 +1,50 @@
+
+<div class='container'>
+
+  <h3>Add A Quote</h3>
+
+  <form (submit)="form.valid && onSubmit($event, form)" #form='ngForm'>
+    <div class="form-group col-8">
+      <textarea
+        class="form-control"
+        rows="3"
+        name="userQuote"
+        required
+        minlength="4"
+        [(ngModel)]='user.userQuote'
+        #userQuote="ngModel"
+      >
+      </textarea>
+      <span class="errors" *ngIf='(userQuote.touched || userQuote.dirty) && userQuote.errors' class="alert alert-danger">
+        <span class="errors" *ngIf='!userQuote.valid'>
+          Quote is required, Must have minimum 4 characters
+        </span>
+      </span>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-4">
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          placeholder="Authors Name"
+          required
+          minlength="2"
+          [(ngModel)]='user.name'
+          #name="ngModel"
+        >
+      </div>
+      <span class="errors" *ngIf='(name.touched || name.dirty) && name.errors' class="alert alert-danger">
+        <span class="errors" *ngIf='!name.valid'>
+          Author is required, Must have minimum 2 characters
+        </span>
+      </span>
+    </div>
+    <button class="btn btn-outline-success" type="submit">Submit Quote</button>
+  </form>
+  <hr>
+
+  <app-quotes-list [userInfo]="users"></app-quotes-list>
+
+</div>

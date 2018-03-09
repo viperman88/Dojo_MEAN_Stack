@@ -1,0 +1,28 @@
+.container {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 30px;
+  padding: 3%;
+  background-color: rgb(244,246,247);
+}
+
+.col-sm-4 {
+  padding: 0%;
+}
+
+/* Creates borders to left of input that show required fields as red and green once completed */
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid rgb(41, 184, 48); /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #CB444A; /* red */
+}
+
+span.alert.alert-danger {
+  margin-top: 10px;
+}
+
+.form-group {
+  padding-left: 0%;
+}
