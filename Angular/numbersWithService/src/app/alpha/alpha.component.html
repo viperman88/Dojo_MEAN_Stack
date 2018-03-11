@@ -1,3 +1,8 @@
-<p>
-  alpha works!
-</p>
+<div>
+  <button class="btn btn-outline-danger" (click)='onClick()' >Generate Sequence 1</button>
+  <ul class="list-group" >
+    <h5 *ngFor='let number of _dataService.randArrayAlpha'>
+      {{ number}}
+    </h5>
+  </ul>
+</div>

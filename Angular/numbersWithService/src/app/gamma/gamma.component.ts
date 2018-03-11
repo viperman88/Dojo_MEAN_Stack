@@ -8,9 +8,21 @@ import { DataService } from '../data.service';
 })
 export class GammaComponent implements OnInit {
 
-  constructor( private_dataService: DataService ) { }
+  constructor( private _dataService: DataService ) { }
+
+  difference: number;
 
   ngOnInit() {
+  }
+
+  onClick() {
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+    const sum = this._dataService.randArrayAlpha.reduce(reducer);
+
+    this.difference = sum - this._dataService.randArrayBeta.reduce(reducer);
+
+    return this.difference;
   }
 
 }

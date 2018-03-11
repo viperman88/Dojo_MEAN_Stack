@@ -1,3 +1,8 @@
-<p>
-  beta works!
-</p>
+<div>
+    <button class="btn btn-outline-primary" (click)='onClick()' >Generate Sequence 1</button>
+    <ul class="list-group" >
+      <h5 *ngFor='let number of _dataService.randArrayBeta'>
+        {{ number}}
+      </h5>
+    </ul>
+  </div>

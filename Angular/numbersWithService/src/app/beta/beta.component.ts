@@ -8,7 +8,11 @@ import { DataService } from '../data.service';
 })
 export class BetaComponent implements OnInit {
 
-  constructor( private_dataService: DataService ) { }
+  constructor( private _dataService: DataService ) { }
+
+  onClick(num) {
+    this._dataService.randArrayBeta.push(this._dataService.generateRandomNum());
+  }
 
   ngOnInit() {
   }
