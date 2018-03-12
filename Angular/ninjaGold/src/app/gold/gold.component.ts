@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GoldService } from '../gold.service';
 
 @Component({
   selector: 'app-gold',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoldComponent implements OnInit {
 
-  constructor() { }
+  score = 0;
+
+  constructor(private _goldService: GoldService) { }
 
   ngOnInit() {
+    this._goldService.score$.subscribe((score) => {
+      console.log(score);
+      this.score += score;
+    });
+    console.log('gold count', this.score);
   }
 
 }

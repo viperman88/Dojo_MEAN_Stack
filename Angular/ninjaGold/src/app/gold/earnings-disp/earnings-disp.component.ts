@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GoldService } from '../../gold.service';
 
 @Component({
   selector: 'app-earnings-disp',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EarningsDispComponent implements OnInit {
 
-  constructor() { }
+  constructor(public _goldService: GoldService) { }
 
   ngOnInit() {
   }
