@@ -5,8 +5,10 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AlphaComponent } from './alpha/alpha.component';
 import { BetaComponent } from './beta/beta.component';
-import { TaskService } from './task.service';
 
+import { TaskService } from './task.service';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { TaskService } from './task.service';
     BetaComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]
